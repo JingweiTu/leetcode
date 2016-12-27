@@ -1,20 +1,21 @@
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
 class Solution(object):
 
-    # Recursive solution. O(n) runtime, because it is a tree traversal. Linear space complexity.
-    # Concise (although it could be more readable). Recursively search through tree, taking 
-    # advantage of the fact that changing any node's root does not affect it. 
-    def invertTree(self, root):
+    # O(n) time. Linear space complexity. Run through the sorted array of citations.
+    # If the ith index has a number of citations larger than or equal to N-i (the remaining)
+    # number of citations, then we return N-i (the number of citations, including the ith) left over.
+    def hIndex(self, citations):
         """
-        :type root: TreeNode
-        :rtype: TreeNode
+        :type citations: List[int]
+        :rtype: int
         """
-        if root:
-            root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
-        return root
+        N = len(citations)
+        
+        if N == 0:
+            return 0
+            
+        citations.sort()
+        
+        for i in range(N):
+            if (N - i) <= citations[i]:
+                return N-i
+        return 0
