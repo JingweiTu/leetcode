@@ -9,6 +9,8 @@ class Solution(object):
     # Case 3: "9". Similar to 6 case.
     # Case 4: Similar to 6 and 9 case, except it has to be the same number in the corresponding
     # position. 
+    # We only need to cycle through the first half of the list, since we are comparing it to 
+    # the second half.
     def isStrobogrammatic(self, num):
         """
         :type num: str
@@ -16,7 +18,7 @@ class Solution(object):
         """
         num_string = str(num)
         bad_numbers = set(["2","3","4","5","7"])
-        for i in range(len(num_string)):
+        for i in range(len(num_string)//2 + 1):
             if num_string[i] in bad_numbers:
                 return False
             elif num_string[i] == "6":

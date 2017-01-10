@@ -16,3 +16,15 @@ class Solution(object):
             else: 
                 return True
         return False
+
+    # O(n) time complexity. Linear space complexity. 
+    # Because sets don't care about duplicates, if there is a duplicate, then it will not be 
+    # counted twice in the set version of nums. Thus, if there is a duplicate, the length of 
+    # nums as a list will be longer than nums as a set.
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+
+        return len(nums) != len(set(nums))
