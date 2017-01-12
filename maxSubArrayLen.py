@@ -14,7 +14,7 @@ class Solution(object):
         ans, acc = 0, 0               
         #key is acc value, and value is the index
         accumulations = {0:-1}                 
-        for i in xrange(len(nums)):
+        for i in range(len(nums)):
             acc += nums[i]
             if acc not in accumulations:
                 accumulations[acc] = i 
